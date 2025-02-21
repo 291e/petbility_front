@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&family=Merriweather:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Noto Sans KR", "Merriweather", sans-serif;
+}
+
+@layer base {
+  :root {
+    /* 🌟 기본 컬러 (밝은 테마) */
+    --background: 39 50% 96%; /* 크림 베이지 */
+    --foreground: 220 15% 20%; /* 차콜 블루 */
+
+    --card: 39 45% 92%; /* 밝은 베이지 */
+    --card-foreground: 220 15% 20%;
+
+    --primary: 220 15% 20%; /* 차콜 블루 */
+    --primary-foreground: 39 50% 96%;
+
+    --secondary: 30 20% 85%; /* 웜 그레이 */
+    --secondary-foreground: 220 15% 20%;
+
+    --muted: 30 15% 80%;
+    --muted-foreground: 220 10% 35%;
+
+    --accent: 0 75% 65%; /* 코랄 오렌지 */
+    --accent-foreground: 39 50% 96%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 39 50% 96%;
+
+    --border: 30 20% 80%;
+    --input: 30 20% 80%;
+    --ring: 220 15% 20%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* 🌙 다크 모드 컬러 */
+    --background: 220 15% 10%;
+    --foreground: 39 50% 96%;
+
+    --card: 220 15% 15%;
+    --card-foreground: 39 50% 96%;
+
+    --primary: 39 50% 96%;
+    --primary-foreground: 220 15% 10%;
+
+    --secondary: 220 15% 25%;
+    --secondary-foreground: 39 50% 96%;
+
+    --muted: 220 10% 30%;
+    --muted-foreground: 39 50% 90%;
+
+    --accent: 0 75% 55%;
+    --accent-foreground: 39 50% 96%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 39 50% 96%;
+
+    --border: 220 15% 25%;
+    --input: 220 15% 25%;
+    --ring: 39 50% 96%;
+  }
+}
+
+/* 기본 요소 스타일 */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 추가 컴포넌트 스타일 */
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-4 py-2 rounded-md shadow-md hover:bg-accent transition;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground px-4 py-2 rounded-md shadow-md hover:bg-accent transition;
+  }
+
+  .card {
+    @apply bg-card text-card-foreground p-6 rounded-lg shadow-md;
+  }
+
+  .input-field {
+    @apply border border-input px-3 py-2 rounded-md focus:outline-none focus:border-accent transition;
+  }
+}
