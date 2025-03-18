@@ -1,3 +1,5 @@
+"use client";
+
 import UpdatePasswordForm from "@/components/Forms/UpdatePasswordForm";
 import Link from "next/link";
 import { motion } from "framer-motion";

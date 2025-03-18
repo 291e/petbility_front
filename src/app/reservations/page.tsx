@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { MapPin, Star, Heart, Filter } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,15 +14,12 @@ const filterOptions = [
 ];
 
 export default function ReservationList() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const [filteredServices, setFilteredServices] = useState(services);
-  const [selectedFilter, setSelectedFilter] = useState(
-    searchParams.get("filter") || "rating"
-  );
+  const [selectedFilter, setSelectedFilter] = useState("rating"); // ✅ useState로 필터 관리
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  // 🔹 필터 변경 시 서비스 리스트 정렬
   useEffect(() => {
     let sortedServices = [...services];
 
@@ -38,10 +34,9 @@ export default function ReservationList() {
     setFilteredServices(sortedServices);
   }, [selectedFilter]);
 
-  // 🔹 필터 변경 시 URL 변경 함수
+  // 🔹 필터 변경 함수
   const updateFilter = (filter: string) => {
     setSelectedFilter(filter);
-    router.push(`/reservations?filter=${filter}`);
     setIsDropdownOpen(false); // 선택 후 드롭다운 닫기
   };
 
@@ -77,7 +72,7 @@ export default function ReservationList() {
       <div className="relative flex justify-end mb-6">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md flex items-center transition-all hover:bg-gray-300"
+          className="px-4 py-2 bg-white text-gray-700 rounded-md flex items-center transition-all hover:bg-gray-300"
         >
           <Filter size={18} className="mr-2" />
           {filterOptions.find((f) => f.value === selectedFilter)?.name}
